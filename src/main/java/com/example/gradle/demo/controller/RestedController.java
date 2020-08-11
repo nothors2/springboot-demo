@@ -3,6 +3,7 @@ package com.example.gradle.demo.controller;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,9 +24,10 @@ public class RestedController {
     */
     @GetMapping(value = "/helloworld/json")
     @ResponseBody
-    public Hello helloworldJson() {
+    public Hello helloworldJson(@RequestParam String para) {
         Hello hello = new Hello();
         hello.message = "helloworld";
+        if(para != null) hello.setMessage(para);
         return hello;
     }
     /*
